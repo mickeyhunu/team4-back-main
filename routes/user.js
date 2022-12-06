@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../lib/logger');
 const userService = require('../service/userService');
-const middleware = require('../lib/middleware');
+const { isLoggedIn } = require('../lib/middleware');
 
 // 등록
-router.post('/',middleware.isLoggedIn, async (req, res) => {
+router.post('/', isLoggedIn,async (req, res) => {
   try {
     const params = {
       departmentId: req.body.departmentId,
@@ -39,7 +39,7 @@ router.post('/',middleware.isLoggedIn, async (req, res) => {
 });
 
 // 리스트 조회
-router.get('/', middleware.isLoggedIn, async (req, res) => {
+router.get('/',isLoggedIn, async (req, res) => {
   try {
     const params = {
       name: req.query.name,
@@ -58,7 +58,7 @@ router.get('/', middleware.isLoggedIn, async (req, res) => {
 });
 
 // 상세정보 조회
-router.get('/:id', middleware.isLoggedIn, async (req, res) => {
+router.get('/:id', isLoggedIn, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
@@ -76,7 +76,7 @@ router.get('/:id', middleware.isLoggedIn, async (req, res) => {
 });
 
 // 수정
-router.put('/:id', middleware.isLoggedIn, async (req, res) => {
+router.put('/:id', isLoggedIn, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
@@ -107,7 +107,7 @@ router.put('/:id', middleware.isLoggedIn, async (req, res) => {
 });
 
 // 삭제
-router.delete('/:id', middleware.isLoggedIn, async (req, res) => {
+router.delete('/:id', isLoggedIn, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
