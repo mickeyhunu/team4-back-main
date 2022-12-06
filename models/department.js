@@ -5,9 +5,11 @@ module.exports = class Department extends Sequelize.Model {
     return super.init({
       name: {
         type: Sequelize.STRING(50),
+        allowNull: false
       },
       code: {
         type: Sequelize.STRING(50),
+        allowNull: false
       },
       description: {
         type: Sequelize.TEXT,
