@@ -24,7 +24,7 @@ const dao = {
     }
 
     // order by 정렬 조건
-    setQuery.order = [['id', 'DESC']];
+    setQuery.order = [['id', 'ASC']];
 
     return new Promise((resolve, reject) => {
       Department.findAndCountAll({

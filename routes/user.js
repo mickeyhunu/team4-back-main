@@ -6,7 +6,7 @@ const userService = require('../service/userService');
 const middleware = require('../lib/middleware');
 
 // 등록
-router.post('/', middleware.isLoggedIn, async (req, res) => {
+router.post('/',middleware.isLoggedIn, async (req, res) => {
   try {
     const params = {
       departmentId: req.body.departmentId,

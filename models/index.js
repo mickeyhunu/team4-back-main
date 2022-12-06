@@ -25,7 +25,7 @@ Object.keys(db).forEach((modelName) => {
 });
 
 // association(관계 생성)
-// Department.associate(db);
-// User.associate(db);
+Department.associate(db);
+User.associate(db);
 
 module.exports = db;

@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 // const { User, Department } = require('../models/index');
-const { User } = require('../models/index');
+const { User, Department } = require('../models/index');
 
 const dao = {
   // 등록
@@ -34,18 +34,18 @@ const dao = {
     }
 
     // order by 정렬 조건
-    setQuery.order = [['id', 'DESC']];
+    setQuery.order = [['id', 'ASC']];
 
     return new Promise((resolve, reject) => {
       User.findAndCountAll({
         ...setQuery,
         attributes: { exclude: ['password'] }, // password 필드 제외
-        // include: [
-        //   {
-        //     model: Department,
-        //     as: 'Department',
-        //   },
-        // ],
+        include: [
+          {
+            model: Department,
+            as: 'Department',
+          },
+        ],
       }).then((selectedList) => {
         resolve(selectedList);
       }).catch((err) => {
