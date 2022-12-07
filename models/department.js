@@ -9,7 +9,7 @@ module.exports = class Department extends Sequelize.Model {
       },
       code: {
         type: Sequelize.STRING(50),
-        allowNull: false
+
       },
       description: {
         type: Sequelize.TEXT,
