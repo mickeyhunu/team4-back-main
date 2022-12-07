@@ -92,7 +92,7 @@ router.put('/:id',isLoggedIn,authentication, async (req, res) => {
 });
 
 // 삭제
-router.delete('/:id',isLoggedIn, async (req, res) => {
+router.delete('/:id',isLoggedIn,authentication, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
