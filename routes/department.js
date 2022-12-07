@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const logger = require('../lib/logger');
 const departmentService = require('../service/departmentService');
-const { isLoggedIn } = require('../lib/middleware');
+const { authentication,isLoggedIn } = require('../lib/middleware');
 
 // 등록
-router.post('/',isLoggedIn, async (req, res) => {
+router.post('/',isLoggedIn, authentication, async (req, res) => {
   try {
     const params = {
       name: req.body.name,
@@ -53,7 +53,7 @@ router.get('/',isLoggedIn, async (req, res) => {
 });
 
 // 상세정보 조회
-router.get('/:id',isLoggedIn, async (req, res) => {
+router.get('/:id',isLoggedIn,authentication, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
@@ -71,7 +71,7 @@ router.get('/:id',isLoggedIn, async (req, res) => {
 });
 
 // 수정
-router.put('/:id',isLoggedIn, async (req, res) => {
+router.put('/:id',isLoggedIn,authentication, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
