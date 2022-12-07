@@ -10,6 +10,7 @@ module.exports = class User extends Sequelize.Model {
       },
       name: {
         type: Sequelize.STRING(100),
+        allowNull: false,
       },
       userid: {
         type: Sequelize.STRING(255),
@@ -21,7 +22,7 @@ module.exports = class User extends Sequelize.Model {
         allowNull: false,
       },
       role: {
-        type: Sequelize.STRING(20),
+        type: Sequelize.ENUM('admin','leader','member'),
       },
       email: {
         type: Sequelize.STRING(255),
@@ -43,6 +44,6 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.belongsTo(db.Department, { foreignKey: { name: 'departmentId', onDelete: 'SET NULL', as: 'Department' } });
+    db.User.belongsTo(db.Department, { foreignKey: { name: 'departmentId', as: 'Department' } });
   }
 };
