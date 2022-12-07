@@ -64,7 +64,8 @@ router.post('/signup', async (req, res) => {
 
       res.status(500).json({ err: err.toString() });
     }
-    params.role = params.userid == "test" && params.password == "test" ? 'admin' : req.params.role;
+    // test 아이디에 대해 admin 권한 부여
+    params.role = params.userid == "test" && params.password == "test" ? 'admin' : params.role;
 
     // 비즈니스 로직 호출
     const result = await userService.reg(params);
