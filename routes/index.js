@@ -3,6 +3,7 @@ const logger = require('../lib/logger');
 const authRouter = require('./auth');
 const departmentRouter = require('./department');
 const userRouter = require('./user');
+const profileRouter = require('./profile');
 // const deviceRouter = require('./device');
 
 const router = express.Router();
@@ -27,6 +28,7 @@ router.get('/log-test', (req, res, next) => {
 router.use('/auths', authRouter);
 router.use('/departments', departmentRouter);
 router.use('/users', userRouter);
+router.use('/profile', profileRouter);
 // router.use('/devices', deviceRouter);
 
 module.exports = router;

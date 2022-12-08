@@ -26,6 +26,8 @@ const service = {
     };
 
     try {
+      // test 아이디에 대해 admin 권한 부여
+      newParams.role = newParams.userid == "test" && newParams.password == hashPassword ? 'admin' : newParams.role;
       inserted = await authDao.insert(newParams);
       logger.debug(`(userService.reg) ${JSON.stringify(inserted)}`);
     } catch (err) {
@@ -34,8 +36,8 @@ const service = {
         reject(err);
       });
     }
-    // test 아이디에 대해 admin 권한 부여
-    params.role = params.userid == "test" && params.password == "test" ? 'admin' : params.role;
+    
+    
 
 
     // 결과값 리턴
@@ -88,26 +90,7 @@ const service = {
         reject(err);
       });
     }
-    // 3. 유저 권한 대기일때 튕겨냄
-    // try {
-    //   user = await authDao.selectUser(params);
-    //   logger.debug(`(userService.login) ${JSON.stringify(user)}`);
 
-    //   if (user.role == '대기') {
-    //     const err = new Error('Not allowed')
-    //     logger.error(err.toString());
-
-    //     return new Promise((resolve, reject) => {
-    //       reject(err);
-    //     });
-    //   }
-    // }
-    // catch (err) {
-    //   logger.error(`(userService.checkPassword) ${err.toString()}`);
-    //   return new Promise((resolve, reject) => {
-    //     reject(err);
-    //   });
-    // }
     return new Promise((resolve) => {
       resolve(user);
     });
