@@ -19,7 +19,7 @@ router.post('/token', async (req, res) => {
       const err = new Error('Not allowed null (userid, password)');
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
     
     // 비즈니스 로직 호출
@@ -59,7 +59,7 @@ router.post('/signup', async (req, res) => {
       const err = new Error('Not allowed null (name, userid, password)');
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
 
 
