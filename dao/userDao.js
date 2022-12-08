@@ -1,5 +1,4 @@
 const { Op } = require('sequelize');
-// const { User, Department } = require('../models/index');
 const { User, Department } = require('../models/index');
 
 const dao = {
@@ -90,19 +89,6 @@ const dao = {
         where: { id: params.id },
       }).then((deleted) => {
         resolve({ deletedCount: deleted });
-      }).catch((err) => {
-        reject(err);
-      });
-    });
-  },
-  // 로그인을 위한 사용자 조회
-  selectUser(params) {
-    return new Promise((resolve, reject) => {
-      User.findOne({
-        attributes: ['id', 'userid', 'password', 'name', 'role'],
-        where: { userid: params.userid },
-      }).then((selectedOne) => {
-        resolve(selectedOne);
       }).catch((err) => {
         reject(err);
       });

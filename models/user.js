@@ -22,7 +22,7 @@ module.exports = class User extends Sequelize.Model {
         allowNull: false,
       },
       role: {
-        type: Sequelize.ENUM('admin','leader','member'),
+        type: Sequelize.ENUM('admin','팀장','팀원','대기'),
       },
       email: {
         type: Sequelize.STRING(255),
