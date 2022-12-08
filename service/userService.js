@@ -122,7 +122,7 @@ const service = {
 
       // 해당 사용자가 없는 경우 튕겨냄
       if (!user) {
-        const err = new Error('Incorect userid or password');
+        const err = new Error('Incorect user');
         logger.error(err.toString());
 
         return new Promise((resolve, reject) => {
@@ -156,7 +156,26 @@ const service = {
         reject(err);
       });
     }
+    // 3. 유저 권한 대기일때 튕겨냄
+    try {
+      user = await userDao.selectUser(params);
+      logger.debug(`(userService.login) ${JSON.stringify(user)}`);
 
+      if (user.role == '대기') {
+        const err = new Error('Not allowed')
+        logger.error(err.toString());
+
+        return new Promise((resolve, reject) => {
+          reject(err);
+        });
+      }
+    }
+    catch (err) {
+      logger.error(`(userService.checkPassword) ${err.toString()}`);
+      return new Promise((resolve, reject) => {
+        reject(err);
+      });
+    }
     return new Promise((resolve) => {
       resolve(user);
     });
