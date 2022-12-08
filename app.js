@@ -15,6 +15,8 @@ const indexRouter = require('./routes/index');
 const app = express();
 // logger.info('app start');
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
