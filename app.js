@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const corsConfig = require('./config/corsConfig.json');
 const models = require('./models/index');
+const fs = require('fs');
 const logger = require('./lib/logger');
 
 const indexRouter = require('./routes/index');
@@ -40,10 +41,18 @@ app.use(cors(corsConfig));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//프로필사진이 들어갈 업로드 폴더 생성
+const makefolder = (dir) => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+}
+makefolder('./uploads')
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); //img업로드
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 app.use('/', indexRouter);
 // app.use('/users', usersRouter); // 구코드 삭제
 

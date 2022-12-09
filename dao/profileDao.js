@@ -19,6 +19,7 @@ const dao = {
   // 수정
   update(params) {
     return new Promise((resolve, reject) => {
+      console.log(params);
       User.update(
         params,
         {
