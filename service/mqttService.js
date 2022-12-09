@@ -1,4 +1,4 @@
-const logger = require('../lib/logger');
+// const logger = require('../lib/logger');
 const mqttDao = require('../dao/mqttDao');
 
 const service = {
@@ -8,9 +8,9 @@ const service = {
 
     try {
       inserted = await mqttDao.insert(params);
-      logger.debug(`(mqttService.reg) ${JSON.stringify(inserted)}`);
+      // logger.debug(`(mqttService.reg) ${JSON.stringify(inserted)}`);
     } catch (err) {
-      logger.error(`(mqttService.reg) ${err.toString()}`);
+      // logger.error(`(mqttService.reg) ${err.toString()}`);
       return new Promise((resolve, reject) => {
         reject(err);
       });
