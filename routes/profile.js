@@ -34,21 +34,11 @@ router.put('/:id', isLoggedIn, upload.single('img'),   async (req, res) => {
       role: req.body.role,
       email: req.body.email,
       phone: req.body.phone,
-      img: req.file.originalname
+      img: req.file ? req.file.filename : null
     };
-    // const formData = req.file;
-    // console.log(req.file.originalname)
-    // let img = "";
-    // if (formData) {
-    //   img = null ? formData["img"].filename : null;
-    //   // console.log(img)
-    // }
-    // else {
-    //   img = null;
-    // }
+
     logger.info(`(user.update.params) ${JSON.stringify(params)}`);
 
-    
     // 입력값 null 체크
     if (!params.name) {
       const err = new Error('Not allowed null (name)');
@@ -56,7 +46,6 @@ router.put('/:id', isLoggedIn, upload.single('img'),   async (req, res) => {
 
       return res.status(500).json({ err: err.toString() });
     }
-
 
     const result = await profileService.edit(params);
     logger.info(`(user.update.result) ${JSON.stringify(result)}`);
