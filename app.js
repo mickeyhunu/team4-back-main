@@ -18,6 +18,8 @@ const mqtt_connect = require('./lib/mqtt');
 const app = express();
 logger.info('app start');
 
+mqtt_connect.connecting(1);
+mqtt_connect.connecting(2);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
