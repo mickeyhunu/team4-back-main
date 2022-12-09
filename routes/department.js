@@ -48,7 +48,7 @@ router.get('/',isLoggedIn, async (req, res) => {
     // 최종 응답
     res.status(200).json(result);
   } catch (err) {
-    res.status(500).json({ err: err.toString() });
+    return res.status(500).json({ err: err.toString() });
   }
 });
 
