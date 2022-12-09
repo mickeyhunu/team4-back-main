@@ -39,6 +39,7 @@ router.put('/:id', isLoggedIn, upload.single('img'),   async (req, res) => {
 
     logger.info(`(user.update.params) ${JSON.stringify(params)}`);
 
+
     // 입력값 null 체크
     if (!params.name) {
       const err = new Error('Not allowed null (name)');
