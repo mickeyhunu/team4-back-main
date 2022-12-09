@@ -30,6 +30,10 @@ module.exports = class User extends Sequelize.Model {
       phone: {
         type: Sequelize.STRING(255),
       },
+      img: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       updatedPwDate: {
         type: Sequelize.DATE,
       },

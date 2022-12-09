@@ -24,7 +24,7 @@ router.post('/', isLoggedIn, authentication, async (req, res) => {
       const err = new Error('Not allowed null (name, userid, password)');
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
 
     // 비즈니스 로직 호출
@@ -93,7 +93,7 @@ router.put('/:id', isLoggedIn,authentication, async (req, res) => {
       const err = new Error('Not allowed null (name)');
       logger.error(err.toString());
 
-      res.status(500).json({ err: err.toString() });
+      return res.status(500).json({ err: err.toString() });
     }
 
     const result = await userService.edit(params);
