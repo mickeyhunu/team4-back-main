@@ -18,9 +18,6 @@ const mqtt_connect = require('./lib/mqtt');
 const app = express();
 logger.info('app start');
 
-mqtt_connect.connecting(1);
-// mqtt_connect.connecting(2);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,6 +35,9 @@ models.sequelize.authenticate().then(() => {
 }).catch((err) => {
   logger.error('DB Connection fail', err);
 });
+
+mqtt_connect.connecting(1);
+// mqtt_connect.connecting(2);
 
 // app.use(logger('dev')); // 구코드 삭제
 app.use(cors(corsConfig));

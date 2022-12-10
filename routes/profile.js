@@ -29,7 +29,7 @@ router.put('/:id', isLoggedIn, upload.single('img'),   async (req, res) => {
   try {
     const params = {
       id: req.params.id,
-      departmentId: req.body.departmentId,
+      departmentId: req.body.departmentId ? req.body.departmentId : null,
       name: req.body.name,
       role: req.body.role,
       email: req.body.email,
@@ -38,7 +38,6 @@ router.put('/:id', isLoggedIn, upload.single('img'),   async (req, res) => {
     };
 
     logger.info(`(user.update.params) ${JSON.stringify(params)}`);
-
 
     // 입력값 null 체크
     if (!params.name) {
