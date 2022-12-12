@@ -76,23 +76,60 @@ const service = {
       resolve(result);
     });
   },
-  // update
+  // update 비밀번호 처리로직 수정함
   async edit(params) {
     let result = null;
+    let inserted = params.password;
+    
+    // 비밀번호 수정이 있을 때
+    // 비밀번호 암호화
+    if(params.password != null) {
+      let hashPassword = null;
+      try {
+        hashPassword = await hashUtil.makePasswordHash(inserted);
+        logger.debug(`(userService.makePassword) ${JSON.stringify(inserted)}`);
+      } catch (err) {
+        logger.error(`(userService.makePassword) ${err.toString()}`);
+        return new Promise((resolve, reject) => {
+          reject(err);
+        });
+      }
+      const newParams = {
+        ...params,
+        password: hashPassword,
+      };
 
-    try {
-      result = await userDao.update(params);
-      logger.debug(`(userService.edit) ${JSON.stringify(result)}`);
-    } catch (err) {
-      logger.error(`(userService.edit) ${err.toString()}`);
-      return new Promise((resolve, reject) => {
-        reject(err);
+      try {
+        result = await userDao.update(newParams);
+        logger.debug(`(userService.edit) ${JSON.stringify(result)}`);
+      } catch (err) {
+        logger.error(`(userService.edit) ${err.toString()}`);
+        return new Promise((resolve, reject) => {
+          reject(err);
+        });
+      }
+  
+      return new Promise((resolve) => {
+        resolve(result);
+      });
+
+    } else {
+
+      // 비밀번호 외 다른 항목만 수정할때
+      try {
+        result = await userDao.update(params);
+        logger.debug(`(userService.edit) ${JSON.stringify(result)}`);
+      } catch (err) {
+        logger.error(`(userService.edit) ${err.toString()}`);
+        return new Promise((resolve, reject) => {
+          reject(err);
+        });
+      }
+  
+      return new Promise((resolve) => {
+        resolve(result);
       });
     }
-
-    return new Promise((resolve) => {
-      resolve(result);
-    });
   },
   // delelte
   async delete(params) {

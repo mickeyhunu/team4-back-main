@@ -85,6 +85,7 @@ router.put('/:id', isLoggedIn,authentication, async (req, res) => {
       role: req.body.role,
       email: req.body.email,
       phone: req.body.phone,
+      password: req.body.password // 추가
     };
     logger.info(`(user.update.params) ${JSON.stringify(params)}`);
 

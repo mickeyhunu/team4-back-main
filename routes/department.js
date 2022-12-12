@@ -20,7 +20,7 @@ router.post('/',isLoggedIn, authentication, async (req, res) => {
       const err = new Error('Not allowed null (name)');
       logger.error(err.toString());
 
-      return res.status(500).json({ err: err.toString() });   //Cannot set headers after they are sent to the client error
+      res.status(500).json({ err: err.toString() });
     }
 
     // 비즈니스 로직 호출
@@ -48,7 +48,7 @@ router.get('/',isLoggedIn, async (req, res) => {
     // 최종 응답
     res.status(200).json(result);
   } catch (err) {
-    return res.status(500).json({ err: err.toString() });
+    res.status(500).json({ err: err.toString() });
   }
 });
 
