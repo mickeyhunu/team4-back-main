@@ -5,11 +5,11 @@ module.exports = class Product extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
       goods: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       fair: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
     }, {

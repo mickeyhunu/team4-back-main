@@ -9,9 +9,9 @@ const service = {
 
     try {
       result = await profileDao.selectInfo(params);
-      logger.debug(`(userService.info) ${JSON.stringify(result)}`);
+      logger.debug(`(profileService.info) ${JSON.stringify(result)}`);
     } catch (err) {
-      logger.error(`(userService.info) ${err.toString()}`);
+      logger.error(`(profileService.info) ${err.toString()}`);
       return new Promise((resolve, reject) => {
         reject(err);
       });
@@ -31,9 +31,9 @@ const service = {
       let hashPassword = null;
       try {
         hashPassword = await hashUtil.makePasswordHash(inserted);
-        logger.debug(`(userService.makePassword) ${JSON.stringify(inserted)}`);
+        logger.debug(`(profileService.makePassword) ${JSON.stringify(inserted)}`);
       } catch (err) {
-        logger.error(`(userService.makePassword) ${err.toString()}`);
+        logger.error(`(profileService.makePassword) ${err.toString()}`);
         return new Promise((resolve, reject) => {
           reject(err);
         });
@@ -45,9 +45,9 @@ const service = {
 
       try {
         result = await profileDao.update(newParams);
-        logger.debug(`(userService.edit) ${JSON.stringify(result)}`);
+        logger.debug(`(profileService.edit) ${JSON.stringify(result)}`);
       } catch (err) {
-        logger.error(`(userService.edit) ${err.toString()}`);
+        logger.error(`(profileService.edit) ${err.toString()}`);
         return new Promise((resolve, reject) => {
           reject(err);
         });
@@ -60,9 +60,9 @@ const service = {
       // 비밀번호 외 다른 항목만 수정할때
       try {
         result = await profileDao.update(params);
-        logger.debug(`(userService.edit) ${JSON.stringify(result)}`);
+        logger.debug(`(profileService.edit) ${JSON.stringify(result)}`);
       } catch (err) {
-        logger.error(`(userService.edit) ${err.toString()}`);
+        logger.error(`(profileService.edit) ${err.toString()}`);
         return new Promise((resolve, reject) => {
           reject(err);
         });
