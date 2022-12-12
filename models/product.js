@@ -4,13 +4,19 @@ const Sequelize = require('sequelize');
 module.exports = class Product extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
-      goods: {
+      deviceId: {
         type: Sequelize.INTEGER,
+        // foreignKey: true,
         allowNull: false,
       },
       fair: {
+        type: Sequelize.STRING,
+      },
+      dice: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+      },
+      color: {
+        type: Sequelize.ENUM('빨간색', '흰색'),
       },
     }, {
       sequelize,
@@ -21,8 +27,7 @@ module.exports = class Product extends Sequelize.Model {
       paranoid: false, // deletedAt
     });
   }
-
-  static associate(db) {
-    db.Product.belongsTo(db.Device, { foreignKey: { name: 'deviceId', as: 'Device' } });
-  }
+  // static associate(db){
+  //   db.Product.belongsTo(db.Device, { foreignKey: 'deviceId', targetKey: 'id'});
+  // }
 };

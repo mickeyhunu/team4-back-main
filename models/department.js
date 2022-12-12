@@ -23,7 +23,4 @@ module.exports = class Department extends Sequelize.Model {
       paranoid: true, // deletedAt
     });
   }
-  // static associate(db) {
-  //   db.User.belongsTo(db.Department, { foreignKey: { name: 'departmentId', onDelete: 'SET NULL', as: 'Department' } });
-  // }
 };
