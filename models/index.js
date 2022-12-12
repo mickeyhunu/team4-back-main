@@ -2,6 +2,7 @@ const { sequelize } = require('./connection');
 const Department = require('./department');
 const User = require('./user');
 const Device = require('./device');
+const Product = require('./product');
 
 const db = {};
 
@@ -11,11 +12,13 @@ db.sequelize = sequelize;
 db.Department = Department;
 db.User = User;
 db.Device = Device;
+db.Product = Product;
 
 // model init
 Department.init(sequelize);
 User.init(sequelize);
 Device.init(sequelize);
+Product.init(sequelize)
 
 // association(관계 생성) 이해를 위해 하나씩 관계설정함 아래는 한번에 설정
 Object.keys(db).forEach((modelName) => {
