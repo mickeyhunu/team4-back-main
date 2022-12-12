@@ -25,7 +25,7 @@ router.get('/:id', isLoggedIn, async (req, res) => {
 });
 
 // 자신 프로필 수정
-router.put('/:id', isLoggedIn,   async (req, res) => {
+router.put('/:id', isLoggedIn, async (req, res) => {
   try {
     const params = {
       id: req.params.id,
