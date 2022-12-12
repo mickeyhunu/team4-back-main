@@ -13,10 +13,10 @@ const logger = require('./lib/logger');
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users'); // 구코드 삭제
 
+const { mqtt_connect_1, mqtt_connect_2 } = require('./lib/mqtt');
+
 const app = express();
-// logger.info('app start');
-
-
+logger.info('app start');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +35,9 @@ models.sequelize.authenticate().then(() => {
 }).catch((err) => {
   logger.error('DB Connection fail', err);
 });
+
+mqtt_connect_1.connecting(1, 'ws', 1000, process.env.MACHINE1_HOST, process.env.MACHINE1_PORT, process.env.MACHINE1_PATH);
+mqtt_connect_2.connecting(2, 'ws', 1000, process.env.MACHINE2_HOST, process.env.MACHINE2_PORT, process.env.MACHINE2_PATH);
 
 // app.use(logger('dev')); // 구코드 삭제
 app.use(cors(corsConfig));
