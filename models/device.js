@@ -6,6 +6,7 @@ module.exports = class Device extends Sequelize.Model {
     return super.init({
       deviceId: {
         type: Sequelize.INTEGER,
+        unique: true,
         allowNull: false,
       },
 
