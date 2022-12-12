@@ -6,7 +6,7 @@ module.exports = class Device extends Sequelize.Model {
     return super.init({
       deviceId: {
         type: Sequelize.INTEGER,
-        unique: true,
+        // foreignKey: true,
         allowNull: false,
       },
 
@@ -53,16 +53,16 @@ module.exports = class Device extends Sequelize.Model {
         type: Sequelize.STRING,
       },
       No1Delay: {  //14
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       No1Count: {  //15
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       No2Count: {  //16
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       No3Count: {  //17
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       lamp_green: {  //18
         type: Sequelize.STRING,
@@ -77,7 +77,7 @@ module.exports = class Device extends Sequelize.Model {
         type: Sequelize.INTEGER,
       },
       No3Motor2: {  //22
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       No1ChipFull: {  //23
         type: Sequelize.STRING,
@@ -113,19 +113,19 @@ module.exports = class Device extends Sequelize.Model {
         type: Sequelize.STRING,
       },
       No3DiceReading: {  //34
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       Emergency: {  //35
         type: Sequelize.STRING,
       },
       OutputLimit: {  //36
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       DiceValue: {  //37
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       DiceComparisonValue: {  //38
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       ColorSensorSensing: {  //39
         type: Sequelize.STRING,
@@ -142,7 +142,7 @@ module.exports = class Device extends Sequelize.Model {
       paranoid: true, // deletedAt
     });
   }
-
   // static associate(db) {
+  //   db.Device.hasMany(db.Product, { foreignKey: 'deviceId', sourceKey: 'id' });
   // }
 };
