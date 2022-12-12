@@ -74,7 +74,7 @@ module.exports = class Device extends Sequelize.Model {
         type: Sequelize.STRING,
       },
       No3Motor1: {  //21
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       No3Motor2: {  //22
         type: Sequelize.STRING,
