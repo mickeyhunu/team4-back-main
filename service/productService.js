@@ -6,7 +6,8 @@ const service = {
     let inserted = null;
     try {
       const _params = {
-        deviceId : params.deviceId,
+        deviceId: params.deviceId,
+        productId: params.productId,
         fair : params.fair,
         dice : params.dice,
         color : params.color,
@@ -49,6 +50,7 @@ const service = {
     try {
       const _params = {
         id: await productDao.currentIdInfo(params.deviceId),
+        productId: params.productId,
         dice: params.dice,
         fair: params.fair
       }

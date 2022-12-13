@@ -11,6 +11,9 @@ router.post('/',isLoggedIn, authentication, async (req, res) => {
     const params = {
       name: req.body.name,
       code: req.body.code,
+      host: req.body.host,
+      port: req.body.port,
+      path: req.body.path,
       description: req.body.description,
     };
     logger.info(`(department.reg.params) ${JSON.stringify(params)}`);
@@ -77,6 +80,10 @@ router.put('/:id',isLoggedIn,authentication, async (req, res) => {
       id: req.params.id,
       name: req.body.name,
       code: req.body.code,
+      host: req.body.host,
+      port: req.body.port,
+      path: req.body.path,
+      topic: req.body.topic,
       description: req.body.description,
     };
     logger.info(`(department.update.params) ${JSON.stringify(params)}`);
