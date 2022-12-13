@@ -16,10 +16,11 @@ const dao = {
   update(params) {
     return new Promise((resolve, reject) => {
       Product.update(
-        params,
-        {
-          where: { id: params.id },
-        },
+        params, {
+          where: { 
+            deviceId: params.deviceId, 
+            productId: params.productId, 
+        },},
       ).then(([updated]) => {
         resolve({ updatedCount: updated });
       }).catch((err) => {
@@ -31,9 +32,11 @@ const dao = {
   //현재 생산품 id 조회
   currentIdInfo(params) {
     return new Promise((resolve, reject) => {
-      Product.count(
-        params,
-      ).then((currentIdInfo) => {
+      Product.count({
+        where: {
+          deviceId: params.deviceId
+        }
+      }).then((currentIdInfo) => {
         resolve(currentIdInfo);
       }).catch((err) => {
         reject(err);

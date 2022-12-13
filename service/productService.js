@@ -4,10 +4,13 @@ const service = {
   // 데이터 가공 후 전송
   async reg(params) {
     let inserted = null;
+    pid = await productDao.currentIdInfo(params)
+    pid += 1
+    console.log(pid)
     try {
       const _params = {
         deviceId: params.deviceId,
-        productId: params.productId,
+        productId: pid,
         fair : params.fair,
         dice : params.dice,
         color : params.color,
@@ -28,9 +31,11 @@ const service = {
 
   async edit_color(params) {
     let inserted = null;
+    pid = await productDao.currentIdInfo(params)
     try {
       const _params = {
-        id: await productDao.currentIdInfo(params.deviceId),
+        deviceId: params.deviceId,
+        productId: pid,
         color: params.color,
       }
       inserted = await productDao.update(_params);
@@ -48,9 +53,10 @@ const service = {
   async edit_dice(params) {
     let inserted = null;
     try {
+      pid = await productDao.currentIdInfo(params)
       const _params = {
-        id: await productDao.currentIdInfo(params.deviceId),
-        productId: params.productId,
+        deviceId: params.deviceId,
+        productId: pid,
         dice: params.dice,
         fair: params.fair
       }
@@ -69,7 +75,8 @@ const service = {
   async currentidinfo(params) {
     let result = null;
     try {
-      result = await productDao.currentIdInfo(params.deviceId);
+      result = await productDao.currentIdInfo(params);
+      console.log(result)
     } catch (err) {
       return new Promise((resolve, reject) => {
         reject(err);
