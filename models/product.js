@@ -9,6 +9,9 @@ module.exports = class Product extends Sequelize.Model {
         // foreignKey: true,
         allowNull: false,
       },
+      productId: {
+        type: Sequelize.INTEGER,
+      },
       fair: {
         type: Sequelize.STRING,
       },

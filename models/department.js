@@ -9,7 +9,18 @@ module.exports = class Department extends Sequelize.Model {
       },
       code: {
         type: Sequelize.STRING(50),
-
+      },
+      host: {
+        type: Sequelize.STRING(20),
+      },
+      port: {
+        type: Sequelize.STRING(10),
+      },
+      path: {
+        type: Sequelize.STRING(50),
+      },
+      topic: {
+        type: Sequelize.STRING(200),
       },
       description: {
         type: Sequelize.TEXT,
