@@ -38,7 +38,7 @@ router.post('/',isLoggedIn, authentication, async (req, res) => {
 });
 
 // 리스트 조회
-router.get('/',isLoggedIn, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const params = {
       name: req.query.name,
