@@ -14,6 +14,7 @@ router.post('/',isLoggedIn, authentication, async (req, res) => {
       host: req.body.host,
       port: req.body.port,
       path: req.body.path,
+      topic: req.body.topic,
       description: req.body.description,
     };
     logger.info(`(department.reg.params) ${JSON.stringify(params)}`);
