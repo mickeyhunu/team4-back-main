@@ -6,6 +6,9 @@ const service = {
     let inserted = null;
     pid = await productDao.currentIdInfo(params)
     pid += 1
+
+    console.log(params.deviceId+'번 machine '+pid+'번째 출고')
+
     try {
       const _params = {
         deviceId: params.deviceId,
@@ -31,7 +34,7 @@ const service = {
   async edit_color(params) {
     let inserted = null;
     pid = await productDao.currentIdInfo(params)
-    console.log(params.color)
+    console.log(params.deviceId+'번 machine '+pid+'번 '+params.color)
     try {
       const _params = {
         deviceId: params.deviceId,
@@ -52,7 +55,7 @@ const service = {
 
   async edit_dice(params) {
     let inserted = null;
-    console.log(params.dice, params.fair)
+    console.log(params.deviceId+'번 machine '+pid+'번 '+'주사위 : '+params.dice+'양품여부 : '+params.fair)
     try {
       pid = await productDao.currentIdInfo(params)
       const _params = {
