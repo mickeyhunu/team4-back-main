@@ -6,7 +6,6 @@ const service = {
     let inserted = null;
     pid = await productDao.currentIdInfo(params)
     pid += 1
-    console.log(pid)
     try {
       const _params = {
         deviceId: params.deviceId,
