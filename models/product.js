@@ -13,7 +13,7 @@ module.exports = class Product extends Sequelize.Model {
         type: Sequelize.INTEGER,
       },
       fair: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       dice: {
         type: Sequelize.INTEGER,
