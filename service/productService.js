@@ -32,6 +32,7 @@ const service = {
   async edit_color(params) {
     let inserted = null;
     pid = await productDao.currentIdInfo(params)
+    console.log(params.color)
     try {
       const _params = {
         deviceId: params.deviceId,
@@ -52,6 +53,7 @@ const service = {
 
   async edit_dice(params) {
     let inserted = null;
+    console.log(params.dice, params.fair)
     try {
       pid = await productDao.currentIdInfo(params)
       const _params = {

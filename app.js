@@ -13,7 +13,8 @@ const logger = require('./lib/logger');
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users'); // 구코드 삭제
 
-const { mqtt_connect_1, mqtt_connect_2 } = require('./lib/mqtt');
+const { mqtt_connect_1 } = require('./lib/mqtt1');
+const { mqtt_connect_2 } = require('./lib/mqtt2');
 
 const app = express();
 logger.info('app start');
