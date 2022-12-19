@@ -87,6 +87,15 @@ router.put('/:id',isLoggedIn,authentication, async (req, res) => {
       topic: req.body.topic,
       description: req.body.description,
     };
+
+    if (!params.name) {
+      const err = new Error('Not allowed null (name)');
+      logger.error(err.toString());
+
+      return res.status(500).json({ err: err.toString() });
+    }
+
+
     logger.info(`(department.update.params) ${JSON.stringify(params)}`);
 
     const result = await departmentService.edit(params);
